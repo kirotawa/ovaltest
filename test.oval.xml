@@ -22,10 +22,10 @@
               <description></description>
            </metadata>
            <criteria>
-              <criterion test_ref="oval:com.ubuntu.xenial:tst:500" comment="Ubuntu 16.04 is installed." />
+              <criterion test_ref="oval:xenial:tst:500" comment="Ubuntu 16.04 is installed." />
            </criteria>
         </definition>
-        <definition id="oval:com.ubuntu.xenial:def:501" version="1" class="patch">
+        <definition id="oval:xenial:def:501" version="1" class="patch">
            <metadata>
               <title>Test if Pillow is vulnerable to CVE-2020-10177</title>
               <affected family="unix">
@@ -36,42 +36,42 @@
               <description>Pillow before 7.1.0 has multiple out-of-bounds reads in libImaging/FliDecode.c.</description>
            </metadata>
            <criteria>
-              <criterion test_ref="oval:com.ubuntu.xenial:tst:501" comment="test if Ubuntu 16.04 is installed at my system" />
+              <criterion test_ref="oval:xenial:tst:501" comment="test if Ubuntu 16.04 is installed at my system" />
            </criteria>
         </definition>
 </definitions>
 <tests>
-<ind:textfilecontent54_test check="at least one" check_existence="at_least_one_exists" id="oval:com.ubuntu.xenial:tst:500" version="1" comment="Ubuntu 16.04 LTS is installed.">
-           <ind:object object_ref="oval:com.ubuntu.xenial:obj:500" />
-           <ind:state state_ref="oval:com.ubuntu.xenial:ste:500" />
+<ind:textfilecontent54_test check="at least one" check_existence="at_least_one_exists" id="oval:xenial:tst:500" version="1" comment="Ubuntu 16.04 LTS is installed.">
+           <ind:object object_ref="oval:xenial:obj:500" />
+           <ind:state state_ref="oval:xenial:ste:500" />
         </ind:textfilecontent54_test>
-        <linux:dpkginfo_test id="oval:com.ubuntu.xenial:tst:501" version="1" check_existence="at_least_one_exists" check="at least one" comment="?">
-          <linux:object object_ref="oval:com.ubuntu.xenial:obj:501"/>
-          <linux:state state_ref="oval:com.ubuntu.xenial:ste:501"/>
+        <linux:dpkginfo_test id="oval:xenial:tst:501" version="1" check_existence="at_least_one_exists" check="at least one" comment="?">
+          <linux:object object_ref="oval:xenial:obj:501"/>
+          <linux:state state_ref="oval:xenial:ste:501"/>
         </linux:dpkginfo_test>
 </tests>
 <objects>
-<ind:textfilecontent54_object id="oval:com.ubuntu.xenial:obj:500" version="1">
+<ind:textfilecontent54_object id="oval:xenial:obj:500" version="1">
            <ind:filepath datatype="string">/etc/lsb-release</ind:filepath>
              <ind:pattern operation="pattern match">^[\s\S]*DISTRIB_CODENAME=([a-z]+)$</ind:pattern>
            <ind:instance datatype="int">1</ind:instance>
         </ind:textfilecontent54_object>
-        <linux:dpkginfo_object id="oval:com.ubuntu.xenial:obj:501" version="1">
-          <linux:name var_ref="oval:com.ubuntu.xenial:var:501" var_check="at least one" />
+        <linux:dpkginfo_object id="oval:xenial:obj:501" version="1">
+          <linux:name var_ref="oval:xenial:var:501" var_check="at least one" />
         </linux:dpkginfo_object>
 </objects>
 <states>
 
-        <ind:textfilecontent54_state id="oval:com.ubuntu.xenial:ste:500" version="1" comment="Ubuntu 16.04 LTS">
+        <ind:textfilecontent54_state id="oval:xenial:ste:500" version="1" comment="Ubuntu 16.04 LTS">
            <ind:subexpression datatype="string" operation="equals">xenial</ind:subexpression>
         </ind:textfilecontent54_state>
-        <linux:dpkginfo_state id="oval:com.ubuntu.xenial:ste:501" version="1">
+        <linux:dpkginfo_state id="oval:xenial:ste:501" version="1">
           <linux:evr datatype="evr_string" operation="less than">3.1.2-0ubuntu1.4</linux:evr>
         </linux:dpkginfo_state>
 </states>
 <variables>
 
-        <constant_variable id="oval:com.ubuntu.xenial:var:501" version="1" datatype="string" comment="?">
+        <constant_variable id="oval:xenial:var:501" version="1" datatype="string" comment="?">
             <value>python-pil</value>
             <value>python3-pil</value>
         </constant_variable>
